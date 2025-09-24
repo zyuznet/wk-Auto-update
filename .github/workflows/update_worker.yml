@@ -57,12 +57,12 @@ jobs:
         run: |
           download_url="https://github.com/bia-pain-bache/BPB-Worker-Panel/releases/download/${{ env.latest_tag }}/worker.js"
           echo "下载文件: $download_url"
-          curl -L -o _worker.js "$download_url"
+          curl -L -o _workern.js "$download_url"
           echo "${{ env.latest_tag }}" > version.txt
 
       - name: 混淆 BPB worker.js
         run: |
-          javascript-obfuscator _worker.js --output _workern.js \
+          javascript-obfuscator _workern.js --output _worker.js \
             --compact true \
             --control-flow-flattening false \
             --dead-code-injection false \
