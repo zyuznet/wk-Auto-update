@@ -53,7 +53,7 @@ jobs:
           fi
 
       - name: 下载并替换 _worker.js
-        if: env.need_update == 'true'
+        # if: env.need_update == 'true'
         run: |
           download_url="https://github.com/bia-pain-bache/BPB-Worker-Panel/releases/download/${{ env.latest_tag }}/worker.js"
           echo "下载文件: $download_url"
@@ -75,7 +75,7 @@ jobs:
             --unicode-escape-sequence true
 
       - name: 提交更新到 GitHub
-        if: env.need_update == 'true'
+        # if: env.need_update == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
