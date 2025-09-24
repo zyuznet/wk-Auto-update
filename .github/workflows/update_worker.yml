@@ -51,6 +51,20 @@ jobs:
           curl -L -o _worker.js "$download_url"
           echo "${{ env.latest_tag }}" > version.txt
 
+      - name: 混淆 BPB worker.js
+        run: |
+          javascript-obfuscator _worker.js --output _workern.js \
+            --compact true \
+            --control-flow-flattening false \
+            --dead-code-injection false \
+            --identifier-names-generator mangled \
+            --rename-globals false \
+            --string-array true \
+            --string-array-encoding 'rc4' \
+            --string-array-threshold 0.75 \
+            --transform-object-keys true \
+            --unicode-escape-sequence true
+
       - name: 提交更新到 GitHub
         if: env.need_update == 'true'
         run: |
