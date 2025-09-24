@@ -13,6 +13,15 @@ jobs:
       - name: Checkout 仓库
         uses: actions/checkout@v4
 
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+
+      - name: 安装依赖项
+        run: |
+          npm install -g javascript-obfuscator
+
       - name: 获取最新 release 信息
         id: get_release
         run: |
